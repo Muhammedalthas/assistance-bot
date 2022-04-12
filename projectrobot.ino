@@ -1,11 +1,8 @@
 
 #define staff_1 0
 #define s1  1
-#define s3  2
-#define s5  3
-#define staff_2  4
-#define lab  5
-
+#define s5  2
+#define staff_2  3
   
  
 #include <SPI.h>
@@ -22,15 +19,11 @@ String content= "";
 #define Dept_2 "F9 6D 82 3B"
 #define S1  "F9 5E B4 3C"
 #define S3   "09 B5 B0 3B"
-#define S5   "99 76 CA 3C"
 
 #define switch_dept_1 14
 #define switch_dept_2 15
 #define switch_s1 16
 #define switch_s3 17
-#define switch_s5 18
-#define switch_lab 19
-
 
 
    // Create MFRC522 instance.
@@ -84,8 +77,6 @@ pinMode(switch_dept_1,INPUT);  //declare as input for department switch
 pinMode(switch_dept_2,INPUT);  //declare as input for department 2 switch
 pinMode(switch_s1,INPUT);  //declare as input for s1 switch
 pinMode(switch_s3,INPUT);  //declare as input for s3 switch
-pinMode(switch_s5,INPUT);  //declare as input for s5 switch
-pinMode(switch_lab,INPUT);  //declare as input for lab switch
 
 }
 
@@ -124,10 +115,6 @@ void class_finding(){
     { 
    changeDestination(S3);
     }
-    else if  (content == S5)
-    { 
-    changeDestination(S5);
-    }
     else {
     run_motor();
     }
@@ -161,9 +148,6 @@ void switch_sensing(){
   }
   else if (digitalRead(switch_s3)){
     where_go = s3;
-  }
-  else if (digitalRead(switch_s5)){
-    where_go = s5;
   }
 }
 void rfid_checking(){
